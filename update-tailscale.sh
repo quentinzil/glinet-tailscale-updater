@@ -478,7 +478,8 @@ invoke_update() {
 invoke_modify_script() {
     log "INFO" "Modifying gl_tailscale script to work with the new tailscale version"
     # Search for param="--advertise-routes=$routes" and add --stateful-filtering=false
-    sed -i 's|param="--advertise-routes=$routes"|param="--advertise-routes=$routes --stateful-filtering=false"|' /usr/bin/gl_tailscale
+    # Also add 
+    sed -i 's|param="--advertise-routes=$routes"|param="--advertise-routes=$routes --stateful-filtering=false --advertise-exit-node"|' /usr/bin/gl_tailscale
     log "SUCCESS" "gl_tailscale script modified successfully"
 }
 
